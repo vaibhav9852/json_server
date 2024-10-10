@@ -1,0 +1,114 @@
+.container{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%; */
+}
+
+.add-post-container{
+  
+    display: flex;
+    justify-content: start;
+    align-items: start;
+     width: 100%;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
+    gap : 2rem;
+    padding: 3rem;
+    width: 90%;
+}
+
+.card{
+    background-color:aliceblue;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+
+.card button {
+    margin: 0.2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+}
+
+.card button:hover{
+  background-color:azure;
+}
+.add-post{
+   
+  padding: 1rem;
+  margin: 1rem;
+ background-color:cornflowerblue;
+  border-radius: 0.5rem;
+  /* display: flex;
+  justify-content: end;
+  align-items: end; */
+
+}
+
+.input-val{
+    padding: 1rem;
+    background-color: bisque;
+    border-radius: 0.4rem;
+}
+
+.submit-btn{
+    padding: 0.4rem ;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.2rem;
+    background-color: cornflowerblue;
+    margin-left: 0.5rem;
+}
+
+.form{
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;  
+    opacity: 0;
+    pointer-events: none;
+}
+
+.form.open{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.model-outer{
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    pointer-events: none;
+    
+  }
+
+  .model-inner{
+  max-width: 400px;
+  min-width: 200px;
+  min-height: 100px;
+  padding: 2rem;
+  border: 1px solid gray;
+  border-radius: 5%;
+  background-color: bisque;
+  }
+
+  .model-outer.open{
+    opacity: 1;
+    pointer-events: all;
+    
+  }
+
