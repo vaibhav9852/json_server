@@ -92,8 +92,9 @@ async function submitPost(id){
     event.preventDefault();
     const form = document.querySelector('.form')
     const isInputExist = document.querySelector('.input-val')
+    document.querySelector('.model-outer').classList.add('open')
    if(!isInputExist){
-      document.querySelector('.model-outer').classList.add('open')
+     
       let input = document.createElement('input')
       let submit = document.createElement('button')
       input.setAttribute('class','input-val')
