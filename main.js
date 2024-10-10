@@ -1,6 +1,10 @@
 // import {fetchData} from './util/fetchData'
 // fetch data and add button
-let loader = true;
+
+//  import {name} from './util.js'
+//   console.log('name...',name)
+
+
 const URL = 'http://localhost:3000'
 
 async function fetchData(){
@@ -45,8 +49,6 @@ async function fetchData(){
   cardBtn.forEach((btn) =>{
       btn.addEventListener('click',handleButtonClick)
   })
-
- 
     }catch(err){
       console.log('error',err)
     }
@@ -82,7 +84,7 @@ async function submitPost(id){
     }catch(err){
       console.log('submit error',err)
     }finally{
-         document.querySelector('.form').classList.remove('open')
+         document.querySelector('.model-outer').classList.remove('open')
     }
 }
 
@@ -91,7 +93,7 @@ async function submitPost(id){
     const form = document.querySelector('.form')
     const isInputExist = document.querySelector('.input-val')
    if(!isInputExist){
-      document.querySelector('.form').classList.add('open')
+      document.querySelector('.model-outer').classList.add('open')
       let input = document.createElement('input')
       let submit = document.createElement('button')
       input.setAttribute('class','input-val')
@@ -119,7 +121,7 @@ async function updateData(id){
         console.log('err',err)
     }
     const form = document.querySelector('.form')
-    form.classList.add('open')
+    document.querySelector('.model-outer').classList.add('open')
     let input = document.createElement('input')
     let submit = document.createElement('button')
     input.setAttribute('class','input-val')  
@@ -154,11 +156,4 @@ function handleButtonClick(event){
    else
     updateData(btnId)
 }
-
-
-
-
-
-
-
 
