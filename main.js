@@ -57,8 +57,8 @@ async function fetchData(){
 fetchData() 
 
 // send post 
-async function submitPost(id){
-    
+async function submitPost(event,id){
+     event.preventDefault()
     try{
      let inputData = document.querySelector('.input-val').value
       let randomId = Math.floor(Math.random()*100)
@@ -72,19 +72,19 @@ async function submitPost(id){
      let response = await fetch(`${URL}/posts`,{
         method:'POST',
         body : JSON.stringify(data)
-     })
+     }) 
+     document.querySelector('.model-outer').classList.remove('open')
     }else{
         let response = await fetch(`${URL}/posts/${id}`,{
             method : 'PUT',
             body: JSON.stringify({id:`${id}`,title:inputData})
         })
+        document.querySelector('.model-outer').classList.remove('open')
     }
 
-    fetchData()
+    // fetchData()
     }catch(err){
       console.log('submit error',err)
-    }finally{
-         document.querySelector('.model-outer').classList.remove('open')
     }
 }
 
@@ -92,7 +92,10 @@ async function submitPost(id){
     event.preventDefault();
     const form = document.querySelector('.form')
     const isInputExist = document.querySelector('.input-val')
-    document.querySelector('.model-outer').classList.add('open')
+   let modelOuter =  document.querySelector('.model-outer')
+    modelOuter.classList.add('open')
+   
+
    if(!isInputExist){
      
       let input = document.createElement('input')
@@ -103,8 +106,8 @@ async function submitPost(id){
       submit.appendChild(document.createTextNode('Add'))
       form.appendChild(submit)
       let submitBtn = document.querySelector('.submit-btn')
-      submitBtn.addEventListener('click',function(){
-        submitPost(null)
+      submitBtn.addEventListener('click',function(event){
+        submitPost(event,null)
       })
     }
 }
@@ -132,8 +135,8 @@ async function updateData(id){
     submit.appendChild(document.createTextNode('Add'))
     form.appendChild(submit)
     let submitBtn = document.querySelector('.submit-btn')
-    submitBtn.addEventListener('click',function(){
-        submitPost(id)
+    submitBtn.addEventListener('click',function(event){
+        submitPost(event,id)
     })
 }
 
@@ -156,5 +159,16 @@ function handleButtonClick(event){
     deleteData(btnId)
    else
     updateData(btnId)
+}
+
+
+let modal =  document.querySelector('.container')
+let outerModel = document.querySelector('.model-outer')
+window.onclick = function(event){
+  console.log('event target',event.target)
+   if(event.target == outerModel){
+      outerModel.classList.remove('open')
+    
+   }
 }
 
